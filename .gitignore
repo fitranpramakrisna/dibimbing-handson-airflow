@@ -1,0 +1,6 @@
+airflow/data/
+airflow/plugins/
+spark/scripts/
+kafka/scripts/
+db/sql/
+.env
