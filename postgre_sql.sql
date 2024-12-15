@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS dibimbing;
+CREATE DATABASE IF NOT EXISTS dibimbing
 
 CREATE TABLE dibimbing.users (
     id INT,

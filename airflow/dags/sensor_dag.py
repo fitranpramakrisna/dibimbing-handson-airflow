@@ -9,8 +9,10 @@ def sensor_dag():
 
     wait_current_dag = ExternalTaskSensor(
         task_id           = "wait_current_dag",
-        external_dag_id   = "sensor_sleep",
-        external_task_id  = "end_task",
+        external_dag_id   = "sensor_sleep", # apa yang mau dipantau
+        external_task_id  = "end_task", # memantau task nya saja, yaitu task end task
+        # yg di watch oleh sensor adalah job nya (job=unik)
+        # selain itu kita bisa memantau logical datenya
         execution_date_fn = lambda dt: dt.replace(second=0, microsecond=0),
         poke_interval     = 5,
     )

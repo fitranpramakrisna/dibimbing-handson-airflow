@@ -6,6 +6,7 @@ def xcom_with_return_direct_param():
     start_task = EmptyOperator(task_id="start_task")
     end_task   = EmptyOperator(task_id="end_task")
 
+    # mirip function biasa
     @task
     def sender():
         return {
@@ -17,7 +18,8 @@ def xcom_with_return_direct_param():
     def receiver(data):
         print("DATA DARI SENDER:", data)
 
-    start_task >> receiver(sender()) >> end_task
+    sender_task = sender()
+    start_task >> sender_task >> receiver(sender_task) >> end_task
 
 xcom_with_return_direct_param()
 

@@ -9,9 +9,9 @@ def trigger_another_dag_with_completion():
 
     trigger_dag_sleep = TriggerDagRunOperator(
         task_id             = "trigger_dag_sleep",
-        trigger_dag_id      = "sleep_python",
+        trigger_dag_id      = "sleep_python", # task yang mau ditrigger
         wait_for_completion = True,
-        poke_interval       = 5, # cara mengetahui apakah si trigger yg lain udah selesai apa blm
+        poke_interval       = 3, # cara mengetahui apakah si trigger yg lain udah selesai apa blm
         # setiap 5 detik, operator ini apakah trigger lain sudah selesai apa blm
     )
 

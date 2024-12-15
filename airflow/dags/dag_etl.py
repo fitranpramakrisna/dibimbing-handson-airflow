@@ -9,6 +9,22 @@ from airflow.decorators import dag, branch_task, task
 from airflow.operators.empty import EmptyOperator
 
 
+
+# params = {
+#     "url": Param(
+#         default="param1",  # Nilai default
+#         description="Masukkan URL di mana source data berada",
+#         allowed_values=["param1", "param2", "param3"],  # Pilihan dropdown
+#         type="string"
+#     ),
+#     "source_file": Param(
+#         default="csv",  # Nilai default
+#         description="Masukkan source file yang ingin diekstrak (contoh: csv/api)",
+#         allowed_values=["csv", "api"],  # Pilihan dropdown
+#         type="string"
+#     )
+# }
+
 @dag(
     dag_id            = "dag_etl",
     description       = "ini adalah dag untuk ETL",
@@ -18,9 +34,40 @@ from airflow.operators.empty import EmptyOperator
     },
     
     params = {
-        "url": Param("default param1", description="masukan url dimana source data berada"),
-        "source_file": Param("default param2", description="masukan source file yang ingin diekstrak (contoh csv/api)")
-    }
+    "url": Param(
+        default="param1",  # Nilai default
+        description="Masukkan URL di mana source data berada",
+        allowed_values=["param1", "param2", "param3"],  # Pilihan dropdown
+        type="string"
+    ),
+    "source_file": Param(
+        default="csv",  # Nilai default
+        description="Masukkan source file yang ingin diekstrak (contoh: csv/api)",
+        allowed_values=["csv", "api"],  # Pilihan dropdown
+        type="string"
+    )
+}
+    
+    # params = {
+    #      "url": Param(
+    #         'https://ok.surf/api/v1/cors/news-feed',
+    #         type="string",
+    #         title="Select one Number",
+    #         description="With drop down selections you can also have nice display labels for the values.",
+    #         enum=[*range(1, 10)],
+    #         values_display={
+    #             1: "https://raw.githubusercontent.com/codeforamerica/ohana-api/master/data/sample-csv/addresses.csv",
+    #             2: "Two",
+    #             3: "Three",
+    #             4: "Four - is like you take three and get one for free!",
+    #             5: "Five",
+    #             6: "Six",
+    #             7: "Seven",
+    #             8: "Eight",
+    #             9: "Nine",
+    #         },
+    #     )
+    # }
 )
 
 def dag_etl():

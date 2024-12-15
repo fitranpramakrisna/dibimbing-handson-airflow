@@ -10,6 +10,7 @@ def variable_with_object():
 
     @task
     def prev_variable():
+        # data_variable
         var = Variable.get("data_variable", deserialize_json=True)
         print("DATA dari variable sebelumnya adalah:", var)
 

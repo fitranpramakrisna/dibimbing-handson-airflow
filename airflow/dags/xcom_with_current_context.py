@@ -9,18 +9,19 @@ def xcom_with_current_context():
     @task
     def sender(**kwargs):
         ti = kwargs["ti"]
-        ti.xcom_push(
+        ti.xcom_push( ## xcom push ada xcom yg akan mengisi current task nya
             key   = "data",
             value = {
                 "nama"  : "dibimbing",
                 "divisi": "DE",
+                "anggota" : "fitran dwi"
             }
         )
 
     @task
     def receiver(**kwargs):
         ti   = kwargs["ti"]
-        data = ti.xcom_pull(
+        data = ti.xcom_pull( # mengambil data dari task yg xcom nya udah dikirimin
             task_ids = "sender",
             key      = "data"
         )
